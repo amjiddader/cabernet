@@ -1,9 +1,10 @@
 FROM python:3.12-alpine
 WORKDIR /app
 COPY . .
+COPY config.ini /app/data/config.ini
 RUN apk add --no-cache --update bash tzdata ffmpeg curl su-exec && \
     apk add --no-cache --virtual builddeps gcc musl-dev python3-dev libffi-dev openssl-dev cargo && \
-    pip3 install -r requirements.txt --no-cache-dir && \
+    python3 -m pip install -r requirements.txt --no-cache-dir && \
     apk del builddeps && \
     touch /app/is_container && \
     mv Docker_entrypoint.sh /usr/local/bin && \
