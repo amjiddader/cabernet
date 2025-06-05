@@ -1,7 +1,0 @@
-*
-!*.py
-!lib
-!plugins
-!requirements.txt
-!Docker_entrypoint.sh
-!LICENSE
